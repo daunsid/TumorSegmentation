@@ -7,6 +7,7 @@ from typing import Optional
 
 
 class ImageDataset(Dataset):
+    
     def __init__(self, images:list, images_df:pd.DataFrame, transform:Optional[object]=None, 
                  tp:float=0.5, input_size:tuple=(224, 224), target_size:tuple=(224, 224)):
       
@@ -16,10 +17,16 @@ class ImageDataset(Dataset):
         self.tp = tp
         self.input_size = input_size
         self.target_size = target_size
+
+    def __repr__(self):
+        return __class__
         
         
     def __len__(self):
         return len(self.images_df)
+    
+
+    
     
        
     def __getitem__(self, idx:int):
